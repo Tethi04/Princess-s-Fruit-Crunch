@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const width = 8;
             const squares = [];
             
-            const fruitPoints = { '🍓': 5, '🍋': 10, '🍏': 15, '🫐': 20, '🍇': 25, '🍊': 30 };
+            const fruitPoints = { '🍓': 10, '🍋': 20, '🍏': 30, '🫐': 40, '🍇': 50, '🍊': 60 };
             const fruitKeys = Object.keys(fruitPoints);
 
             // Rebalanced levels to make Level 3 and onwards much fairer!
