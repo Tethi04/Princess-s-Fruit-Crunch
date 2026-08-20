@@ -8,46 +8,70 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-   <div class="panel">
-        <div class="header-top">
-            <h1>👑 Level <span id="level-display">1</span></h1>
-            <div class="moves-box">
-                <span class="moves-label">Moves</span>
-                <div id="moves-display" class="moves-value">11</div>
+     <!-- SCREEN 1: MAIN MENU -->
+    <div id="screen-menu" class="screen active">
+        <div class="menu-crown">👑</div>
+        <div class="menu-title">Princess's<br>Fruit Crunch</div>
+        <button class="btn" onclick="showScreen('map')">Start Adventure</button>
+        <button class="btn btn-secondary" onclick="resetSave()">Reset Progress</button>
+    </div>
+
+    <!-- SCREEN 2: ROYAL MAP (LEVEL SELECTOR) -->
+    <div id="screen-map" class="screen">
+        <div class="map-header">
+            <h2>🗺️ The Royal Kingdom</h2>
+            <p style="margin: 5px 0 0 0; font-size: 0.9rem;">Select a level to play</p>
+        </div>
+        <div class="map-grid" id="level-grid">
+            <!-- JavaScript will inject level buttons here -->
+        </div>
+        <button class="btn btn-secondary" onclick="showScreen('menu')">⬅ Back to Menu</button>
+    </div>
+
+    <!-- SCREEN 3: GAMEPLAY -->
+    <div id="screen-game" class="screen">
+        <div class="panel">
+            <div class="header-top">
+                <!-- Back Button built right into the header -->
+                <h1><button class="btn-icon" onclick="exitToMap()" title="Back to Map">⬅️</button> Level <span id="level-display">1</span></h1>
+                <div class="moves-box">
+                    <span class="moves-label">Moves</span>
+                    <div id="moves-display" class="moves-value">11</div>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div id="score-progress" class="progress-fill"></div>
+                <div class="progress-text">
+                    <span id="score">0</span> &nbsp;/&nbsp; <span id="target-score">2000</span>
+                </div>
             </div>
         </div>
-        <div class="progress-bar">
-            <div id="score-progress" class="progress-fill"></div>
-            <div class="progress-text">
-                <span id="score">0</span> &nbsp;/&nbsp; <span id="target-score">2000</span>
-            </div>
+
+        <div class="panel">
+            <div id="combo-announcer" class="combo-announcer"></div>
+            <div class="game-board" id="grid"></div>
         </div>
     </div>
 
-    <div class="panel">
-        <div id="combo-announcer" class="combo-announcer"></div>
-        <div class="game-board" id="grid">
-        </div>
-    </div>
-
+    <!-- GAME MODALS -->
     <div id="game-modal" class="modal-overlay">
         <div class="modal-box">
             <div id="modal-content"></div>
-            <button id="modal-btn" class="btn">Start Game</button>
-            <button id="reset-btn" class="btn btn-secondary hidden">Restart from Level 1</button>
+            <button id="modal-btn" class="btn">Continue</button>
+            <button id="modal-map-btn" class="btn hidden" style="background: white; border: 2px solid #db2777; color: #db2777; box-shadow: none; margin-top: 10px;">Return to Map</button>
         </div>
     </div>
+
     <div id="victory-modal" class="modal-overlay victory-bg">
         <div id="gift-closed" class="gift-shake">🎁</div>
         <p id="gift-hint" style="color: #fbcfe8; font-weight: bold; font-size: 1.2rem;">Tap to open, Princess!</p>
-
         <div id="gift-open" class="hidden flex-col">
             <div style="font-size: 5rem; margin-bottom: 1rem;" class="reveal-anim">👑💖✨</div>
             <h2 class="reveal-text reveal-anim" style="animation-delay: 0.2s">Magnificent, Princess!</h2>
             <p class="reveal-anim" style="color: white; margin-bottom: 2rem; text-align: center; max-width: 80%; animation-delay: 0.4s">
                 You conquered all 10 levels of Fruit Crunch!
             </p>
-            <button onclick="resetGameCompletely()" class="victory-btn reveal-anim" style="animation-delay: 0.6s">Play Again</button>
+            <button onclick="location.reload()" class="victory-btn reveal-anim" style="animation-delay: 0.6s">Back to Menu</button>
         </div>
     </div>
 </body>
