@@ -19,13 +19,15 @@
     <!-- SCREEN 2: ROYAL MAP (LEVEL SELECTOR) -->
     <div id="screen-map" class="screen">
         <div class="map-header">
-            <h2>🗺️ The Royal Kingdom</h2>
-            <p style="margin: 5px 0 0 0; font-size: 0.9rem;">Select a level to play</p>
+            <h2 id="map-title-txt">🗺️ The Royal Kingdom</h2>
+            <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #e2e8f0;">Select a level to play</p>
         </div>
-        <div class="map-grid" id="level-grid">
+        <div class="map-wrapper" id="map-scroll-area">
+            <div id="level-grid-w1"></div>
+            <div id="level-grid-w2"></div>
             <!-- JavaScript will inject level buttons here -->
         </div>
-        <button class="btn btn-secondary" onclick="showScreen('menu')">⬅ Back to Menu</button>
+        <button class="btn btn-secondary" style="margin-top: 10px;" onclick="showScreen('menu')">⬅ Back to Menu</button>
     </div>
 
     <!-- SCREEN 3: GAMEPLAY -->
@@ -36,13 +38,17 @@
                 <h1><button class="btn-icon" onclick="exitToMap()" title="Back to Map">⬅️</button> Level <span id="level-display">1</span></h1>
                 <div class="moves-box">
                     <span class="moves-label">Moves</span>
-                    <div id="moves-display" class="moves-value">11</div>
+                    <div id="moves-display" class="moves-value">22</div>
                 </div>
             </div>
             <div class="progress-bar">
                 <div id="score-progress" class="progress-fill"></div>
+                <!--ADVANCED FEATURE: Star Markers-->
+                <div id="star-marker-1" class="star-marker" style="left: 33%">★</div>
+                <div id="star-marker-2" class="star-marker" style="left: 66%">★</div>
+                <div id="star-marker-3" class="star-marker" style="left: 100%">★</div>
                 <div class="progress-text">
-                    <span id="score">0</span> &nbsp;/&nbsp; <span id="target-score">2000</span>
+                    <span id="score">0</span> <!--&nbsp;/&nbsp; <span id="target-score">2000</span> -->
                 </div>
             </div>
         </div>
@@ -56,20 +62,23 @@
     <!-- GAME MODALS -->
     <div id="game-modal" class="modal-overlay">
         <div class="modal-box">
+            <!--ADVANCED FEATURE: Modal Star Display-->
+            <div id="modal-stars" class="modal-stars hidden"><span>★</span><span>★</span><span>★</span></div>
             <div id="modal-content"></div>
             <button id="modal-btn" class="btn">Continue</button>
             <button id="modal-map-btn" class="btn hidden" style="background: white; border: 2px solid #db2777; color: #db2777; box-shadow: none; margin-top: 10px;">Return to Map</button>
         </div>
     </div>
 
+    <!--VICTORY MODAL-->
     <div id="victory-modal" class="modal-overlay victory-bg">
-        <div id="gift-closed" class="gift-shake">🎁</div>
-        <p id="gift-hint" style="color: #fbcfe8; font-weight: bold; font-size: 1.2rem;">Tap to open, Princess!</p>
+        <div id="gift-closed" class="gift-shake">🌟🎁🌟</div>
+        <p id="gift-hint" style="color: #e0e7ff; font-weight: bold; font-size: 1.2rem;">Tap to open your Grand Prize!</p>
         <div id="gift-open" class="hidden flex-col">
-            <div style="font-size: 5rem; margin-bottom: 1rem;" class="reveal-anim">👑💖✨</div>
-            <h2 class="reveal-text reveal-anim" style="animation-delay: 0.2s">Magnificent, Princess!</h2>
-            <p class="reveal-anim" style="color: white; margin-bottom: 2rem; text-align: center; max-width: 80%; animation-delay: 0.4s">
-                You conquered all 10 levels of Fruit Crunch!
+            <div style="font-size: 5rem; margin-bottom: 1rem;" class="reveal-anim">👑💎✨</div>
+            <h2 class="reveal-text reveal-anim" style="animation-delay: 0.2s">Ultimate Master!</h2>
+            <p class="reveal-anim" style="color: white; margin-bottom: 2rem; text-align: center; max-width: 80%; font-size: 1.1rem; animation-delay: 0.4s">
+                You conquered the Royal Garden AND the Starlight Realm! YOu are the true Fruit Crunch Master!
             </p>
             <button onclick="location.reload()" class="victory-btn reveal-anim" style="animation-delay: 0.6s">Back to Menu</button>
         </div>
