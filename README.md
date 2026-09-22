@@ -13,8 +13,9 @@
 ## 📸 Preview
 
 <p align="center">
- <img src="preview.png" alt="Princess's Fruit Crunch Game Landing Page" width="380" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);"/>
+  <img src="assets/preview.png" alt="Princess's Fruit Crunch Game Landing Page" width="380" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);"/>
 </p>
+
 
 ---
 
@@ -56,7 +57,7 @@ Princess-s-Fruit-Crunch/
 ├── style.css            # Custom CSS styling & pastel theme
 ├── script.js           # Core game engine & match-3 logic
 └── README.md            # Documentation
-
+```
 🚀 Local Development
 To run this project locally on your machine:
 
